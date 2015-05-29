@@ -1,0 +1,53 @@
+﻿@model FlickrTest.Models.FlickrImagesCollection
+
+@{
+    ViewBag.Title = "Sharred Page";
+}
+
+<div class="message">
+    <p id="chache-status">
+        @*We can add localiztion and stylin if we want*@
+        <span class="status" id="in-progress-p1" style="display: none">Requesting...</span>
+        <span class="status" id="in-progress-p2" style="display: none">Retrieving...</span>
+        <span class="status" id="zero-result" style="display: none">Nothing was found by this tag</span>
+        <span class="status" id="cache" style="display: none">Loaded from cache</span>
+        <span class="status" id="flickr" style="display: none">Loaded from flickr</span>
+    </p>
+</div>
+
+<div class="grid" id="container">
+    @{
+        foreach (var item in Model.Images)
+        {
+            <div class="grid-item">
+                <div class="item-content">
+                    <div class="image-preview lazy" style="background-image: url('@item.ImageUrl')"></div>
+                    <div class="image-text">@item.Title</div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        var cw = $(".grid-item").width();
+        $(".item-content").css({
+            height: cw - 20 + "px"  //hardcodded margin
+        });
+
+        $(".item-content").fadeIn();
+        $(".image-preview").imageloader(
+        {
+            background: true,
+            callback: function (elm) {
+
+                $(elm).fadeIn();
+            }
+        }
+        );
+    });
+
+   
+</script>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Flickr Test";
+}
+
+@*<h2>Index</h2>
+@Html.TextBox("tags",null, new { placeholder = "Type in your search"})
+    *@
+@*<h2>Share</h2>
+<div>
+    <a id="link" href=""></a>
+</div>
+    
+<h2>Pictures</h2>*@
+
+<div class ="message">
+    <p id="chache-status">
+        @*We can add localiztion and stylin if we want*@
+        <span class="status" id="in-progress-p1" style="display: none">Requesting...</span>
+        <span class="status" id="in-progress-p2" style="display: none">Retrieving...</span>
+        <span class="status" id="zero-result" style="display: none">Nothing was found by this tag</span>
+        <span class="status" id="cache" style="display: none">Loaded from cache</span>
+        <span class="status" id="flickr" style="display: none">Loaded from flickr</span>
+    </p>
+</div>
+
+
+<div class="grid" id="container">
+</div>
